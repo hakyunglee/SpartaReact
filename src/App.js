@@ -1,25 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
 
-function App() {
+function Square(props) {
+  const squareStyle = {
+    width: "100px",
+    height: "100px",
+    border: "1px solid green",
+    borderRadius: "10px",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+  };
+  return <div style={squareStyle}>{props.vegetable}</div>
+}
+
+const App = () => {
+  const style = {
+    padding: "100px",
+    display: "flex",
+    gap: "12px",
+  };
+
+  const vegetables = ["감자", "고구마", "오이", "가지", "옥수수"];
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div style={style}>
+     {vegetables.map((vegetable) => {
+      return <Square key={vegetable} vegetable={vegetable}></Square>
+     })}
     </div>
   );
-}
+};
 
 export default App;
